@@ -23,10 +23,8 @@ namespace BookServiceAPI.Services
             return books;
         }
 
-        public Book GetBook(int id)
-        {
-            return books.FirstOrDefault(item => item.Id == id);
-        }
+        public Book GetBook(int id) => 
+            books.FirstOrDefault(item => item.Id == id);
 
         public void AddBook(Book item)
         {
@@ -35,7 +33,7 @@ namespace BookServiceAPI.Services
 
         public void UpdateBook(Book item)
         {
-            var target = books.FirstOrDefault(t => t.Id == item.Id);
+            var target = books.FirstOrDefault(b => b.Id == item.Id);
 
             target.Title = item.Title;
             target.ReleaseYear = item.ReleaseYear;
@@ -44,12 +42,12 @@ namespace BookServiceAPI.Services
 
         public void DeleteBook(int id)
         {
-            throw new NotImplementedException();
+            var target = books.FirstOrDefault(b => b.Id == id);
+
+            books.Remove(target);
         }
 
-        public bool BookExsists(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public bool BookExsists(int id) =>
+            books.Any(b => b.Id == id);
     }
 }

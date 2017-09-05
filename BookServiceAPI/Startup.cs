@@ -27,6 +27,7 @@ namespace BookServiceAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IBookService, BookService>();
+            services.AddSingleton<IReviewService, ReviewService>();
             services.AddMvc();
         }
 
